@@ -12,6 +12,7 @@ export class PostRoutes {
   public routes (router: Router): void {
     router
       .get(this.path, this.postController.index)
+      .get(`${this.path}/:id`, this.postController.show)
       .post(this.path, this.postController.store)
   }
 }

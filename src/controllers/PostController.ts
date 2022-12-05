@@ -13,6 +13,7 @@ export class PostController {
     })
   }
 
+  // get post by id
   public show (req: Request, res: Response) {
     Post.findById(req.params.id, (err: CallbackError, post: typeof Post) => {
       if (err) {
