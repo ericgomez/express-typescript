@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import { HomeRoutes } from './routes/HomeRoutes';
 import { PostRoutes } from './routes/PostRoutes';
+import { AuthRoutes } from './routes/AuthRoutes';
 import { config } from './config';
 
 class App {
@@ -11,6 +12,7 @@ class App {
 
   public homeRoutes: HomeRoutes = new HomeRoutes();
   public postRoutes: PostRoutes = new PostRoutes();
+  public authRoutes: AuthRoutes = new AuthRoutes();
 
   constructor() {
     // initialize
@@ -36,6 +38,7 @@ class App {
     this.app.use('/', this.router);
     this.homeRoutes.routes(this.router);
     this.postRoutes.routes(this.router);
+    this.authRoutes.routes(this.router);
   }
 
   private configureMongo() {

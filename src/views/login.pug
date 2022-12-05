@@ -1,0 +1,15 @@
+extends layout.pug
+
+block content
+    if errors
+        ul
+            each error in errors
+                li= error.msg
+
+    form(action='/login', method='POST', autocomplete='off')
+        p
+            | email: 
+            input(type='text', name='email', value='')
+            |   password: 
+            input(type='password', name='password', value='', autocomplete='new-password')
+        input(type='submit', value='Login')
