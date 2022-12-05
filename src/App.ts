@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { HomeRoutes } from './routes/HomeRoutes';
+import { PostRoutes } from './routes/PostRoutes';
 import { config } from './config';
 
 class App {
@@ -9,6 +10,7 @@ class App {
   public MONGO_URI = `mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}`;
 
   public homeRoutes: HomeRoutes = new HomeRoutes();
+  public postRoutes: PostRoutes = new PostRoutes();
 
   constructor() {
     // initialize
@@ -33,6 +35,7 @@ class App {
   private routes() {
     this.app.use('/', this.router);
     this.homeRoutes.routes(this.router);
+    this.postRoutes.routes(this.router);
   }
 
   private configureMongo() {
