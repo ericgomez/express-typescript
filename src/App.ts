@@ -1,9 +1,12 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import { HomeRoutes } from './routes/HomeRoutes';
+import { config } from './config';
 
 class App {
   public app: express.Application;
   public router: express.Router;
+  public MONGO_URI = `mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}`;
 
   public homeRoutes: HomeRoutes = new HomeRoutes();
 
@@ -13,6 +16,7 @@ class App {
     this.router = express.Router();
 
     this.configure();
+    this.configureMongo();
     this.routes();
   }
 
@@ -29,6 +33,10 @@ class App {
   private routes() {
     this.app.use('/', this.router);
     this.homeRoutes.routes(this.router);
+  }
+
+  private configureMongo() {
+    mongoose.connect(this.MONGO_URI);
   }
 }
 
