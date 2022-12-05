@@ -12,7 +12,18 @@ class App {
     this.app = express();
     this.router = express.Router();
 
+    this.configure();
     this.routes();
+  }
+
+  private configure() {
+    // middleware parses incoming requests with JSON payloads
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: false }));
+    
+    // configure template engines
+    this.app.set('views', './src/views');
+    this.app.set('view engine', 'pug');
   }
 
   private routes() {
