@@ -36,9 +36,10 @@ export class PostController {
     })
   }
 
+  // update post
   public update (req: Request, res: Response) {
     const query = {'_id': req.params.id};
-    Post.findByIdAndUpdate(query, req.body, {upsert: true},(err, post) => {
+    Post.findByIdAndUpdate(query, req.body, { upsert: true },(err, post) => {
       if (err) {
         return res.json(err);
       }

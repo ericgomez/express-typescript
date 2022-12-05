@@ -14,5 +14,6 @@ export class PostRoutes {
       .get(this.path, this.postController.index)
       .get(`${this.path}/:id`, this.postController.show)
       .post(this.path, this.postController.store)
+      .put(`${this.path}/:id`, this.postController.update)
   }
 }
