@@ -23,6 +23,7 @@ export class PostController {
     })
   }
     
+  // create new posts
   public store (req: Request, res: Response) {
     let newPost = new Post(req.body);
     newPost.save((err, post) => {

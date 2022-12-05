@@ -11,6 +11,7 @@ export class PostRoutes {
     
   public routes (router: Router): void {
     router
-      .get(this.path, this.postController.index);
+      .get(this.path, this.postController.index)
+      .post(this.path, this.postController.store)
   }
 }
