@@ -48,6 +48,7 @@ export class PostController {
     })
   }
 
+  // delete post
   public destroy (req: Request, res: Response) {
     const query = {'_id': req.params.id};
     Post.findByIdAndDelete(query,(err: CallbackError, post: typeof Post) => {
